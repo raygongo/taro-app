@@ -1,7 +1,7 @@
-import Taro, { Component } from '@tarojs/taro'
-import Index from './pages/index'
+import Taro, { Component } from "@tarojs/taro";
+import Index from "./pages/ExamApply/index";
 
-import './app.styl'
+import "./app.scss";
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -10,34 +10,45 @@ import './app.styl'
 // }
 
 class App extends Component {
+  componentDidMount() {}
 
-  componentDidMount () {}
+  componentDidShow() {}
 
-  componentDidShow () {}
+  componentDidHide() {}
 
-  componentDidHide () {}
-
-  componentDidCatchError () {}
+  componentDidCatchError() {}
 
   config = {
-    pages: [
-      'pages/index/index'
-    ],
+    pages: ["pages/ExamApply/index", "pages/ApplyQuery/home","pages/ApplyQuery/list", "pages/ApplySuccess/index"],
     window: {
-      backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      backgroundTextStyle: "light",
+      navigationBarBackgroundColor: "#fff",
+      navigationBarTitleText: "考级报名",
+      navigationBarTextStyle: "black"
+    },
+    tabBar: {
+      list: [
+        {
+          text: "考级报名",
+          pagePath: "pages/ExamApply/index",
+          iconPath: "assets/images/home.png",
+          selectedIconPath: "assets/images/home_select.png"
+        },
+        {
+          text: "报名查询",
+          pagePath: "pages/ApplyQuery/home",
+          iconPath: "assets/images/find.png",
+          selectedIconPath: "assets/images/find_select.png"
+        }
+      ]
     }
-  }
+  };
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
-  render () {
-    return (
-      <Index />
-    )
+  render() {
+    return <Index />;
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById("app"));
